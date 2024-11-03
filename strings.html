@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="strings.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message Collector</title>
+    <h1>Welcome to the Secret Message Collector!</h1>
+    <p>Please enter your information below:</p>
+
+
+    <input type="text" id="firstName" placeholder="First Name" />
+    <br />
+
+    <input type="text" id="lastName" placeholder="Last Name" />
+    <br />
+
+ 
+    <input type="text" id="zipCode" placeholder="Zip Code (5 digits)" />
+    <br />
+
+
+    <button onclick="validateInput()">Submit</button>
+
+
+    <div id="secretMessage"> Your secret message: Congratulations! You got the secret message! Your message is "Squirrels are the best animal!" 
+        <img src="squirrel.jpeg" alt="squirrel">
+    </div>
+
+    <div id="warningMessage" class="warning"></div>
+
+    <script>
+
+        function validateInput() {
+           
+            const firstName = document.getElementById("firstName").value.trim(); // First name
+            const lastName = document.getElementById("lastName").value.trim(); // Last name
+            const zipCode = document.getElementById("zipCode").value.trim(); // Zip code
+
+            
+            const fullName = firstName + " " + lastName;
+
+         
+            document.getElementById("warningMessage").innerText = "";
+
+        
+            if (fullName.length > 20) {
+              
+                document.getElementById("warningMessage").innerText = "Warning: Full name must be 20 characters or less.";
+                return; 
+            }
+
+           
+            const zipCodeRegex = /^\d{5}$/; 
+            if (!zipCodeRegex.test(zipCode)) {
+               
+                document.getElementById("warningMessage").innerText = "Warning: Zip code must be exactly 5 digits.";
+                return; 
+            }
+
+            
+            document.getElementById("secretMessage").style.display = "block"; 
+        }
+    </script>
+</body>
+</html
